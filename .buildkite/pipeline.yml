@@ -17,6 +17,7 @@ steps:
           iac-type: 'Terraform'
           path: 'main.tf'
           parameter-files: 'variables.tf'
+          api-secret-env: WIZ_SECRET
           
 
       
