@@ -14,7 +14,6 @@ steps:
     plugins:
       - wiz#v1.3.0:
           scan-type: 'iac'
-          path: 'main.tf'
           api-secret-env: WIZ_SECRET
           
 
