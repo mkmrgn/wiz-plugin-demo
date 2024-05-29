@@ -15,8 +15,6 @@ steps:
       - wiz#v1.3.1:
           scan-type: 'iac'
           iac-type: 'Terraform'
-          path: 'main.tf'
-          parameter-files: 'variables.tf'
           api-secret-env: WIZ_SECRET
           
 
