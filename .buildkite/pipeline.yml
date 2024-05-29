@@ -13,9 +13,11 @@ steps:
     command: echo "Scanning Terraform"
     plugins:
       - wiz#v1.3.1:
-          scan-type: "iac"
-          iac-type: "Terraform"
+          scan-type: iac
+          iac-type: terraform
           api-secret-env: WIZ_SECRET
+          path: './main.tf'
+          parameter-files: './variables.tf'
           
 
       
