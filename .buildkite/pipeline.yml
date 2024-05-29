@@ -3,6 +3,8 @@ steps:
     commands: 
       - WIZ_SECRET=$(buildkite-agent secret get WIZ_SECRET)
       - WIZ_API_ID=$(buildkite-agent secret get WIZ_API_ID)
+      - FOO=$(buildkite-agent secret get foo)
+      - echo $foo
       - docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
     plugins:
       - wiz#v1.3.1:
