@@ -1,10 +1,7 @@
 steps:
   - label: ":docker: Build and scan image"
     commands: 
-      - WIZ_SECRET=$(buildkite-agent secret get WIZ_SECRET)
-      - WIZ_API_ID=$(buildkite-agent secret get WIZ_API_ID)
-      - FOO=$(buildkite-agent secret get foo)
-      - echo $FOO
+      - bash auth.sh
       - docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
     plugins:
       - wiz#v1.3.1:
@@ -16,8 +13,7 @@ steps:
 
   - label: ":terraform: Terraform scan"
     commands:
-      - WIZ_SECRET=$(buildkite-agent secret get WIZ_SECRET)
-      - WIZ_API_ID=$(buildkite-agent secret get WIZ_API_ID)
+      - bash auth.sh
       - echo "Scanning Terraform"
     plugins:
       - wiz#v1.3.1:
