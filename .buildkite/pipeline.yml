@@ -1,6 +1,9 @@
 steps:
-  - label: ":docker: build image"
-    command: docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
+  - label: ":docker: Build and scan image"
+    commands: 
+      - WIZ_SECRET=$(buildkite-agent secret get WIZ_SECRET)
+      - WIZ_API_ID=$(buildkite-agent secret get WIZ_API_ID)
+      - docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
     plugins:
       - wiz#v1.3.1:
           scan-type: 'docker'
@@ -9,8 +12,11 @@ steps:
   
   - wait
 
-  - label: ":terraform: terraform scan"
-    command: echo "Scanning Terraform"
+  - label: ":terraform: Terraform scan"
+    commands:
+      - WIZ_SECRET=$(buildkite-agent secret get WIZ_SECRET)
+      - WIZ_API_ID=$(buildkite-agent secret get WIZ_API_ID)
+      - echo "Scanning Terraform"
     plugins:
       - wiz#v1.3.1:
           scan-type: iac
