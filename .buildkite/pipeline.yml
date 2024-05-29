@@ -2,7 +2,7 @@ steps:
   - label: ":docker: build image"
     command: docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
     plugins:
-      - wiz#v1.3.0:
+      - wiz#v1.3.1:
           scan-type: 'docker'
           image-address: "plugin-demo:${BUILDKITE_BUILD_NUMBER}"
           api-secret-env: WIZ_SECRET
@@ -12,8 +12,10 @@ steps:
   - label: ":terraform: terraform scan"
     command: echo "Scanning Terraform"
     plugins:
-      - wiz#v1.3.0:
+      - wiz#v1.3.1:
           scan-type: 'iac'
+          iac-type: 'Terraform'
+          path: 'main.tf'
           api-secret-env: WIZ_SECRET
           
 
