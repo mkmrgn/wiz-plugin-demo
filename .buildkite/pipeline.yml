@@ -14,7 +14,7 @@ steps:
     plugins:
       - wiz#0f926b8:
           scan-type: iac
-          iac-type: terraform
+          iac-type: Terraform
           api-secret-env: WIZ_SECRET
           path: './main.tf'
           parameter-files: './variables.tf'
