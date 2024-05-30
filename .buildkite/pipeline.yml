@@ -1,6 +1,6 @@
 steps:
   - label: ":docker: Build and scan image"
-    command: docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
+    command: docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" --load .
     plugins:
       - wiz#v1.3.1:
           scan-type: 'docker'
