@@ -1,7 +1,7 @@
 steps:
   - label: ":docker: Build and scan image"
     commands: 
-      - bash auth.sh
+      - source auth.sh
       - docker build -t "plugin-demo:${BUILDKITE_BUILD_NUMBER}" .
     plugins:
       - wiz#v1.3.1:
@@ -13,7 +13,7 @@ steps:
 
   - label: ":terraform: Terraform scan"
     commands:
-      - bash auth.sh
+      - source auth.sh
       - echo "Scanning Terraform"
     plugins:
       - wiz#v1.3.1:
